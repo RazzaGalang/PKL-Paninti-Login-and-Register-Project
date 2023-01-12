@@ -20,4 +20,6 @@
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="laki_laki">Laki-Laki</string>
     <string name="perempuan">Perempuan</string>
+    <string name="atau">Atau</string>
+    <string name="email_or_username">Email atau Username</string>
 </resources>

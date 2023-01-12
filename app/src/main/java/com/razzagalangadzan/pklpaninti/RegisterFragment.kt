@@ -17,15 +17,15 @@ import com.razzagalangadzan.pklpaninti.databinding.FragmentRegisterBinding
 
 
 class RegisterFragment : Fragment() {
-    private var _binding: FragmentRegisterBinding? = null;
-    private val binding get() = _binding!!;
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
 
     var validationNamaLengkap = false
     var validationUsername = false
     var validationEmail = false
     var validationPassword = false
     var validationKonfirmPaswword = false
-    var validationJenisKelamin = false
+    private var validationJenisKelamin = false
 
     val minNameRegex = "^.{2,}$"
     val minUserRegex = "^.{6,}$"
@@ -36,8 +36,8 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater, container, false);
-        val view = binding.root;
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         //TODO : Spannable Area and Different Color Text
         val spannable = SpannableStringBuilder(binding.textLogin.text.toString())
@@ -62,7 +62,7 @@ class RegisterFragment : Fragment() {
 
         binding.tfNamaLengkap.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)) {
+                if ((s?.length ?: 0) < 1) {
                     binding.namaLengkap.error = "Nama lengkap wajib diisi!"
                 } else if (s.toString().matches(minNameRegex.toRegex())) {
                     binding.namaLengkap.isErrorEnabled = false
@@ -82,7 +82,7 @@ class RegisterFragment : Fragment() {
 
         binding.tfUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)) {
+                if ((s?.length ?: 0) < 1) {
                     binding.username.error = "Username wajib diisi!"
                 } else if (s.toString().matches(minUserRegex.toRegex()) && s.toString()
                         .matches(validUser.toRegex())
@@ -107,7 +107,7 @@ class RegisterFragment : Fragment() {
 
         binding.tfAlamatEmail.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)) {
+                if ((s?.length ?: 0) < 1) {
                     binding.alamatEmail.error = "Email wajib diisi!"
                 } else if (!isValidEmail(binding.tfAlamatEmail.text.toString())) {
                     binding.alamatEmail.error = "Format email tidak sesuai"
@@ -127,7 +127,7 @@ class RegisterFragment : Fragment() {
 
         binding.tfPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)) {
+                if ((s?.length ?: 0) < 1) {
                     binding.password.error = "Password wajib diisi!"
                 } else if (!(s.toString().matches(validPassRegex.toRegex()))) {
                     binding.password.error =
@@ -161,7 +161,7 @@ class RegisterFragment : Fragment() {
 
         binding.tfKonfirmasiPassoword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)) {
+                if ((s?.length ?: 0) < 1) {
                     binding.konfirmPassword.error = "Konfirmasi Password wajib diisi!"
                 } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString()) {
                     binding.konfirmPassword.error = "Konfirmasi password tidak sesuai!"
@@ -222,8 +222,7 @@ class RegisterFragment : Fragment() {
 
         }
 
-
-        return view;
+        return view
     }
 
     override fun onDestroyView() {

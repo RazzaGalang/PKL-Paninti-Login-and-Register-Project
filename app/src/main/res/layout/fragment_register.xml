@@ -25,217 +25,214 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/nama_lengkap"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="@string/nama_lengkap"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_title">
+                android:layout_height="@dimen/zero_dp"
+                android:layout_marginHorizontal="@dimen/screen_margin"
+                app:layout_constraintTop_toBottomOf="@id/header_title">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tfNamaLengkap"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nama_lengkap"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="text" />
+                    android:layout_marginVertical="@dimen/normal_margin"
+                    android:hint="@string/nama_lengkap"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tfNamaLengkap"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/username"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="@string/username"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nama_lengkap">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tfUsername"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/username"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="text" />
+                    android:layout_marginVertical="@dimen/normal_margin"
+                    android:hint="@string/username"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nama_lengkap">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tfUsername"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/alamatEmail"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="@string/alamat_email"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tfAlamatEmail"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/alamatEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="textEmailAddress" />
+                    android:layout_marginVertical="@dimen/normal_margin"
+                    android:hint="@string/alamat_email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tfAlamatEmail"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="@string/password"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/alamatEmail">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tfPassword"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="textPassword" />
+                    android:layout_marginVertical="8dp"
+                    android:hint="@string/password"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/alamatEmail">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tfPassword"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/konfirm_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="8dp"
-                android:hint="@string/konfirmasi_password"
-                app:endIconMode="password_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password">
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tfKonfirmasiPassoword"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/konfirm_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:inputType="textPassword" />
+                    android:layout_marginVertical="8dp"
+                    android:hint="@string/konfirmasi_password"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tfKonfirmasiPassoword"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword" />
 
-            <TextView
-                android:id="@+id/jenis_kelamin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="@string/jenis_kelamin"
-                android:textColor="@color/label_primary"
-                android:textSize="14dp"
-                app:layout_constraintTop_toBottomOf="@+id/konfirm_password" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <RadioGroup
-                android:id="@+id/radio_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/jenis_kelamin">
+                <TextView
+                    android:id="@+id/jenis_kelamin"
+                    style="@style/TextAppearance.Body2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:text="@string/jenis_kelamin"
+                    android:textColor="@color/label_primary"
+                    android:textSize="14dp"
+                    app:layout_constraintTop_toBottomOf="@+id/konfirm_password" />
 
-                <RadioButton
-                    android:id="@+id/rbLaki"
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/jenis_kelamin">
+
+                    <RadioButton
+                        android:id="@+id/rbLaki"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:checked="true"
+                        android:text="@string/laki_laki"
+                        android:textColor="@color/label_secondary" />
+
+                    <RadioButton
+                        android:id="@+id/rbPerempuan"
+                        style="@style/TextAppearance.Body2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/perempuan"
+                        android:textColor="@color/label_secondary" />
+
+                </RadioGroup>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonDaftar"
+                    style="@style/TextAppearance.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="@string/daftar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:cornerRadius="6dp"
+                    app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonDaftar" />
+
+                <TextView
+                    style="@style/TextAppearance.Caption1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="30dp"
-                    android:checked="true"
-                    android:fontFamily="@font/open_sans"
-                    android:text="@string/laki_laki"
-                    android:textColor="@color/label_secondary" />
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/normal_margin"
+                    android:text="@string/atau"
+                    android:textColor="@color/label_secondary"
+                    app:layout_constraintBottom_toBottomOf="@id/divider"
+                    app:layout_constraintEnd_toEndOf="@id/divider"
+                    app:layout_constraintStart_toStartOf="@id/divider"
+                    app:layout_constraintTop_toTopOf="@id/divider" />
 
-                <RadioButton
-                    android:id="@+id/rbPerempuan"
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonGoogle"
+                    style="@style/TextAppearance.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginVertical="@dimen/button_padding_vertical"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/google"
+                    android:textAllCaps="false"
+                    android:textColor="@color/label_secondary"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/icon_google"
+                    app:iconGravity="start"
+                    app:iconSize="20dp"
+                    app:iconTintMode="multiply"
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    app:strokeColor="@color/gray100"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/text_login"
+                    style="@style/TextAppearance.Caption1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/open_sans"
-                    android:text="@string/perempuan"
-                    android:textColor="@color/label_secondary" />
+                    android:layout_margin="@dimen/screen_margin"
+                    android:paddingBottom="@dimen/screen_margin"
+                    android:text="@string/text_login"
+                    android:textColor="@color/label_secondary"
+                    android:textColorLink="@color/primary500"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/buttonGoogle" />
 
-            </RadioGroup>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonDaftar"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginHorizontal="16dp"
-                android:fontFamily="@font/open_sans_semibold"
-                android:text="@string/daftar"
-                android:textAllCaps="false"
-                app:cornerRadius="6dp"
-                app:layout_constraintTop_toBottomOf="@+id/radio_group" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/buttonDaftar" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:fontFamily="@font/open_sans"
-                android:paddingHorizontal="8dp"
-                android:text="Atau"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/divider"
-                app:layout_constraintEnd_toEndOf="@id/divider"
-                app:layout_constraintStart_toStartOf="@id/divider"
-                app:layout_constraintTop_toTopOf="@id/divider" />
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonGoogle"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="16dp"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/google"
-                android:textAllCaps="false"
-                android:textColor="@color/label_secondary"
-                app:cornerRadius="6dp"
-                app:icon="@drawable/icon_google"
-                app:iconGravity="start"
-                app:iconSize="20dp"
-                app:iconTintMode="multiply"
-                app:layout_constraintTop_toBottomOf="@+id/divider"
-                app:strokeColor="@color/gray100"
-                app:strokeWidth="1dp"
-                tools:layout_editor_absoluteX="16dp" />
-
-            <TextView
-                android:id="@+id/text_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:fontFamily="@font/open_sans"
-                android:paddingBottom="16dp"
-                android:text="@string/text_login"
-                android:textColorLink="@color/primary500"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/buttonGoogle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

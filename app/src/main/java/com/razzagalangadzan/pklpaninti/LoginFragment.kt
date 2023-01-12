@@ -16,8 +16,8 @@ import com.razzagalangadzan.pklpaninti.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    private var _binding: FragmentLoginBinding? = null;
-    private val binding get() = _binding!!;
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +25,9 @@ class LoginFragment : Fragment() {
     ): View? {
         _binding = FragmentLoginBinding.inflate(inflater, container, false);
         val view = binding.root;
+
+        var validationEmailOrUsername = false
+        var validationPassword = false
 
         //TODO : Spannable Area and Different Color Text
         val spannable = SpannableStringBuilder(binding.textRegister.text.toString())
@@ -47,12 +50,14 @@ class LoginFragment : Fragment() {
         binding.textRegister.text = spannable
         binding.textRegister.movementMethod = LinkMovementMethod.getInstance()
 
-        binding.tfEmailAtauUsername.addTextChangedListener(object : TextWatcher {
+        binding.tfEmailOrUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (binding.tfEmailAtauUsername.length() == 0) {
-                    binding.emailAtauUsername.error = "Email atau Username wajib diisi"
+                if ((s?.length ?: 0) < 1) {
+                    binding.emailOrUsername.error = "Email atau Username wajib diisi"
+                    validationEmailOrUsername = false
                 } else {
-                    binding.emailAtauUsername.isErrorEnabled = false
+                    binding.emailOrUsername.isErrorEnabled = false
+                    validationEmailOrUsername = true
                 }
             }
 
@@ -64,13 +69,14 @@ class LoginFragment : Fragment() {
             }
         })
 
-        binding.tfPasswordLogin.addTextChangedListener(object : TextWatcher {
+        binding.tfLoginPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (binding.tfPasswordLogin.length() == 0) {
-                    binding.passwordLogin.error = "Password wajib diisi"
-                    binding.passwordLogin.errorIconDrawable = null
+                if ((s?.length ?: 0) < 1) {
+                    binding.loginPassword.error = "Password wajib diisi"
+                    validationPassword = false
                 } else {
-                    binding.passwordLogin.isErrorEnabled = false
+                    binding.loginPassword.isErrorEnabled = false
+                    validationPassword = true
                 }
             }
 
@@ -84,20 +90,21 @@ class LoginFragment : Fragment() {
         })
 
         binding.buttonMasuk.setOnClickListener {
-            if (binding.tfEmailAtauUsername.length() == 0 && binding.tfPasswordLogin.length() == 0) {
-                binding.emailAtauUsername.error = "Email atau Username wajib diisi"
-                binding.passwordLogin.error = "Password wajib diisi"
-            } else if (binding.tfEmailAtauUsername.length() == 0) {
-                binding.emailAtauUsername.error = "Email atau Username wajib diisi"
-            } else if (binding.tfPasswordLogin.length() == 0) {
-                binding.passwordLogin.error = "Password wajib diisi"
-            } else {
+            if (!validationEmailOrUsername){
+                binding.emailOrUsername.error = "Email atau Username wajib diisi"
+            }
+
+            if (!validationPassword){
+                binding.loginPassword.error = "Password wajib diisi"
+            }
+
+            if (validationEmailOrUsername && validationPassword){
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
         }
 
-        return view;
+        return view
 
     }
 
