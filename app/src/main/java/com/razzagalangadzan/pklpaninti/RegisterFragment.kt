@@ -11,54 +11,32 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.razzagalangadzan.pklpaninti.databinding.FragmentRegisterBinding
-import java.util.regex.Pattern
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     private var _binding: FragmentRegisterBinding? = null;
     private val binding get() = _binding!!;
 
-    var validationNamaLengkap       = "0"
-    var validationUsername          = "0"
-    var validationEmail             = "0"
-    var validationPassword          = "0"
-    var validationKonfirmPaswword   = "0"
-    var validationJenisKelamin      = "0"
+    var validationNamaLengkap = false
+    var validationUsername = false
+    var validationEmail = false
+    var validationPassword = false
+    var validationKonfirmPaswword = false
+    var validationJenisKelamin = false
 
-    val minNameRegex    = "^.{2,}$"
-    val minUserRegex    = "^.{6,}$"
-    val validPassRegex  = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
-    val validUser       = "[a-zA-Z0-9._]+"
+    val minNameRegex = "^.{2,}$"
+    val minUserRegex = "^.{6,}$"
+    val validPassRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+    val validUser = "[a-zA-Z0-9._]+"
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        _binding = FragmentRegisterBinding.inflate(inflater,container,false);
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false);
         val view = binding.root;
 
         //TODO : Spannable Area and Different Color Text
@@ -68,7 +46,7 @@ class RegisterFragment : Fragment() {
             override fun onClick(widget: View) {
                 val fragment = LoginFragment()
                 val transaction = fragmentManager?.beginTransaction()
-                transaction?.replace(R.id.flFragment,fragment)?.commit()
+                transaction?.replace(R.id.flFragment, fragment)?.commit()
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -84,11 +62,11 @@ class RegisterFragment : Fragment() {
 
         binding.tfNamaLengkap.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
+                if (!(s?.length ?: 0 >= 1)) {
                     binding.namaLengkap.error = "Nama lengkap wajib diisi!"
-                } else if (s.toString().matches(minNameRegex.toRegex())){
+                } else if (s.toString().matches(minNameRegex.toRegex())) {
                     binding.namaLengkap.isErrorEnabled = false
-                    validationNamaLengkap = s.toString()
+                    validationNamaLengkap = true
                 } else {
                     binding.namaLengkap.error = "Nama lengkap minimal 2 karakter"
                 }
@@ -104,14 +82,16 @@ class RegisterFragment : Fragment() {
 
         binding.tfUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
+                if (!(s?.length ?: 0 >= 1)) {
                     binding.username.error = "Username wajib diisi!"
-                } else if (s.toString().matches(minUserRegex.toRegex()) && s.toString().matches(validUser.toRegex())){
+                } else if (s.toString().matches(minUserRegex.toRegex()) && s.toString()
+                        .matches(validUser.toRegex())
+                ) {
                     binding.username.isErrorEnabled = false
-                    validationUsername = s.toString()
-                } else if (!(s.toString().matches(validUser.toRegex()))){
+                    validationUsername = true
+                } else if (!(s.toString().matches(validUser.toRegex()))) {
                     binding.username.error = "Username tidak bisa menggunakan simbol selain . dan _"
-                    validationUsername = "0"
+                    validationUsername = false
                 } else {
                     binding.username.error = "Username minimal 6 karakter"
                 }
@@ -127,13 +107,13 @@ class RegisterFragment : Fragment() {
 
         binding.tfAlamatEmail.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
+                if (!(s?.length ?: 0 >= 1)) {
                     binding.alamatEmail.error = "Email wajib diisi!"
                 } else if (!isValidEmail(binding.tfAlamatEmail.text.toString())) {
                     binding.alamatEmail.error = "Format email tidak sesuai"
                 } else {
                     binding.alamatEmail.isErrorEnabled = false
-                    validationEmail = s.toString()
+                    validationEmail = true
                 }
             }
 
@@ -147,23 +127,24 @@ class RegisterFragment : Fragment() {
 
         binding.tfPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
+                if (!(s?.length ?: 0 >= 1)) {
                     binding.password.error = "Password wajib diisi!"
-                } else if (!(s.toString().matches(validPassRegex.toRegex()))){
-                    binding.password.error = "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
+                } else if (!(s.toString().matches(validPassRegex.toRegex()))) {
+                    binding.password.error =
+                        "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
                     binding.konfirmPassword.error = "Konfirmasi password tidak sesuai!"
-                    validationPassword = "0"
-                    validationKonfirmPaswword ="0"
-                } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString() ){
+                    validationPassword = false
+                    validationKonfirmPaswword = false
+                } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString()) {
                     binding.konfirmPassword.error = "Konfirmasi password tidak sesuai!"
                     binding.password.isErrorEnabled = false
-                    validationPassword = s.toString()
-                    validationKonfirmPaswword ="0"
-                } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString() ){
+                    validationPassword = true
+                    validationKonfirmPaswword = false
+                } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString()) {
                     binding.password.isErrorEnabled = false
                     binding.konfirmPassword.isErrorEnabled = false
-                    validationPassword = s.toString()
-                    validationKonfirmPaswword = binding.tfKonfirmasiPassoword.text.toString()
+                    validationPassword = true
+                    validationKonfirmPaswword = true
                 } else {
                     binding.password.isErrorEnabled = false
                 }
@@ -180,16 +161,16 @@ class RegisterFragment : Fragment() {
 
         binding.tfKonfirmasiPassoword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!(s?.length ?: 0 >= 1)){
+                if (!(s?.length ?: 0 >= 1)) {
                     binding.konfirmPassword.error = "Konfirmasi Password wajib diisi!"
-                } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString() ){
+                } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString()) {
                     binding.konfirmPassword.error = "Konfirmasi password tidak sesuai!"
                     binding.password.isErrorEnabled = false
-                    validationKonfirmPaswword = "0"
-                } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString() ){
+                    validationKonfirmPaswword = false
+                } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString()) {
                     binding.konfirmPassword.isErrorEnabled = false
-                    validationKonfirmPaswword = s.toString()
-                    validationPassword = binding.tfPassword.text.toString()
+                    validationKonfirmPaswword = true
+                    validationPassword = true
                 }
             }
 
@@ -202,35 +183,39 @@ class RegisterFragment : Fragment() {
         })
 
         binding.buttonDaftar.setOnClickListener {
-            if (binding.tfNamaLengkap.length() == 0){
+            if (binding.tfNamaLengkap.length() == 0) {
                 binding.namaLengkap.error = "Nama lengkap wajib diisi"
             }
 
-            if (binding.tfUsername.length() == 0){
+            if (binding.tfUsername.length() == 0) {
                 binding.username.error = "Username wajib diisi"
             }
 
-            if (binding.tfAlamatEmail.length() == 0){
+            if (binding.tfAlamatEmail.length() == 0) {
                 binding.alamatEmail.error = "Email wajib diisi"
             }
 
-            if (binding.tfPassword.length() == 0){
+            if (binding.tfPassword.length() == 0) {
                 binding.password.error = "Password wajib diisi"
             }
 
-            if (binding.tfKonfirmasiPassoword.length() == 0){
+            if (binding.tfKonfirmasiPassoword.length() == 0) {
                 binding.konfirmPassword.error = "Konfirmasi password wajib diisi"
             }
 
-            if(binding.rbLaki.isChecked){
-                validationJenisKelamin = "Laki-laki"
+            if (binding.rbLaki.isChecked) {
+                validationJenisKelamin = true
             } else if (binding.rbPerempuan.isChecked) {
-                validationJenisKelamin = "Perempuan"
+                validationJenisKelamin = true
             }
 
-            Toast.makeText(context, "$validationNamaLengkap $validationUsername $validationEmail $validationPassword $validationKonfirmPaswword $validationJenisKelamin", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "$validationNamaLengkap $validationUsername $validationEmail $validationPassword $validationKonfirmPaswword $validationJenisKelamin",
+                Toast.LENGTH_SHORT
+            ).show()
 
-            if (validationNamaLengkap != "0" && validationUsername != "0" && validationEmail != "0" && validationPassword != "0" && validationKonfirmPaswword != "0" && validationJenisKelamin != "0"){
+            if (!validationNamaLengkap && !validationUsername && !validationEmail && !validationPassword && !validationKonfirmPaswword && !validationJenisKelamin) {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -248,25 +233,5 @@ class RegisterFragment : Fragment() {
 
     fun isValidEmail(target: CharSequence?): Boolean {
         return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
