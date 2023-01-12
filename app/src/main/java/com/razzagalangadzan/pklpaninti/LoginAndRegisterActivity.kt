@@ -2,11 +2,14 @@ package com.razzagalangadzan.pklpaninti
 
 import android.os.Build
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 class LoginAndRegisterActivity : AppCompatActivity() {
+
+    private var pressedTime: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -19,6 +22,16 @@ class LoginAndRegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_and_register)
 
         replaceFragment(LoginFragment())
+    }
+
+    override fun onBackPressed() {
+        if (pressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            finish()
+        } else {
+            Toast.makeText(baseContext, "Ketuk lagi untuk keluar!", Toast.LENGTH_SHORT).show()
+        }
+        pressedTime = System.currentTimeMillis()
     }
 
      fun replaceFragment(fragment: Fragment) {

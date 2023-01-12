@@ -49,10 +49,12 @@ class RegisterFragment : Fragment() {
     var validationEmail             = "0"
     var validationPassword          = "0"
     var validationKonfirmPaswword   = "0"
+    var validationJenisKelamin      = "0"
 
-    val minNameRegex = "^.{2,}$"
-    val minUserRegex = "^.{6,}$"
-    val validPassRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+    val minNameRegex    = "^.{2,}$"
+    val minUserRegex    = "^.{6,}$"
+    val validPassRegex  = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+    val validUser       = "[a-zA-Z0-9._]+"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -86,7 +88,7 @@ class RegisterFragment : Fragment() {
                     binding.namaLengkap.error = "Nama lengkap wajib diisi!"
                 } else if (s.toString().matches(minNameRegex.toRegex())){
                     binding.namaLengkap.isErrorEnabled = false
-                    validationNamaLengkap = "1"
+                    validationNamaLengkap = s.toString()
                 } else {
                     binding.namaLengkap.error = "Nama lengkap minimal 2 karakter"
                 }
@@ -104,9 +106,12 @@ class RegisterFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
                 if (!(s?.length ?: 0 >= 1)){
                     binding.username.error = "Username wajib diisi!"
-                } else if (s.toString().matches(minUserRegex.toRegex())){
+                } else if (s.toString().matches(minUserRegex.toRegex()) && s.toString().matches(validUser.toRegex())){
                     binding.username.isErrorEnabled = false
-                    validationUsername = "1"
+                    validationUsername = s.toString()
+                } else if (!(s.toString().matches(validUser.toRegex()))){
+                    binding.username.error = "Username tidak bisa menggunakan simbol selain . dan _"
+                    validationUsername = "0"
                 } else {
                     binding.username.error = "Username minimal 6 karakter"
                 }
@@ -128,7 +133,7 @@ class RegisterFragment : Fragment() {
                     binding.alamatEmail.error = "Format email tidak sesuai"
                 } else {
                     binding.alamatEmail.isErrorEnabled = false
-                    validationEmail = "1"
+                    validationEmail = s.toString()
                 }
             }
 
@@ -152,13 +157,13 @@ class RegisterFragment : Fragment() {
                 } else if (binding.tfPassword.text.toString() != binding.tfKonfirmasiPassoword.text.toString() ){
                     binding.konfirmPassword.error = "Konfirmasi password tidak sesuai!"
                     binding.password.isErrorEnabled = false
-                    validationPassword = "1"
+                    validationPassword = s.toString()
                     validationKonfirmPaswword ="0"
                 } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString() ){
                     binding.password.isErrorEnabled = false
                     binding.konfirmPassword.isErrorEnabled = false
-                    validationPassword = "1"
-                    validationKonfirmPaswword ="1"
+                    validationPassword = s.toString()
+                    validationKonfirmPaswword = binding.tfKonfirmasiPassoword.text.toString()
                 } else {
                     binding.password.isErrorEnabled = false
                 }
@@ -183,8 +188,8 @@ class RegisterFragment : Fragment() {
                     validationKonfirmPaswword = "0"
                 } else if (binding.tfPassword.text.toString() == binding.tfKonfirmasiPassoword.text.toString() ){
                     binding.konfirmPassword.isErrorEnabled = false
-                    validationKonfirmPaswword = "1"
-                    validationPassword = "1"
+                    validationKonfirmPaswword = s.toString()
+                    validationPassword = binding.tfPassword.text.toString()
                 }
             }
 
@@ -218,19 +223,20 @@ class RegisterFragment : Fragment() {
             }
 
             if(binding.rbLaki.isChecked){
-                //todo
+                validationJenisKelamin = "Laki-laki"
             } else if (binding.rbPerempuan.isChecked) {
-                //todo
+                validationJenisKelamin = "Perempuan"
             }
 
-            Toast.makeText(context, "$validationNamaLengkap $validationUsername $validationEmail $validationPassword $validationKonfirmPaswword", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "$validationNamaLengkap $validationUsername $validationEmail $validationPassword $validationKonfirmPaswword $validationJenisKelamin", Toast.LENGTH_SHORT).show()
 
-            if (validationNamaLengkap != "0" && validationUsername != "0" && validationEmail != "0" && validationPassword != "0" && validationKonfirmPaswword != "0"){
+            if (validationNamaLengkap != "0" && validationUsername != "0" && validationEmail != "0" && validationPassword != "0" && validationKonfirmPaswword != "0" && validationJenisKelamin != "0"){
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
 
         }
+
 
         return view;
     }
