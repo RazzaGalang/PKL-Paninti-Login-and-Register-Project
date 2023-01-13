@@ -215,7 +215,7 @@ class RegisterFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
 
-            if (!validationNamaLengkap && !validationUsername && !validationEmail && !validationPassword && !validationKonfirmPaswword && !validationJenisKelamin) {
+            if (validationNamaLengkap && validationUsername && validationEmail && validationPassword && validationKonfirmPaswword && validationJenisKelamin) {
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
             }
