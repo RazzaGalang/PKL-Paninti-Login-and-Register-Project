@@ -19,17 +19,122 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
+    private var validUser = false
+    private var validPass = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false);
-        val view = binding.root;
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        var validationEmailOrUsername = false
-        var validationPassword = false
+        view()
 
-        //TODO : Spannable Area and Different Color Text
+        return view
+
+    }
+
+    private fun view() {
+        spannable()
+        emailOrUsername()
+        password()
+        login()
+    }
+
+    private fun emailOrUsername() {
+        binding.tfEmailOrUsername.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if ((s?.length ?: 0) < 1) {
+                    nullEmailOrUsername()
+                } else {
+                    correctEmailOrUsername()
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
+    }
+
+    private fun password() {
+        binding.tfLoginPassword.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if ((s?.length ?: 0) < 1) {
+                    nullPassword()
+                } else {
+                    correctPassword()
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
+    }
+
+    private fun login() {
+        binding.buttonMasuk.setOnClickListener {
+            validateNullUsernamePassword()
+            validateNullPassword()
+
+            if (validateNullUsernamePassword() && validateNullPassword()){
+                binding()
+            }
+        }
+    }
+
+    private fun validateNullUsernamePassword(): Boolean {
+        if (binding.tfEmailOrUsername.length() == 0){
+            nullEmailOrUsername()
+            validUser = false
+        } else {
+            validUser = true
+        }
+
+        return validUser
+    }
+
+    private fun validateNullPassword(): Boolean {
+        if (binding.tfLoginPassword.length() == 0){
+            nullPassword()
+            validPass = false
+        } else {
+            validPass = true
+        }
+
+        return validPass
+    }
+
+    private fun nullEmailOrUsername(): Boolean {
+        binding.emailOrUsername.error = "Email atau Username wajib diisi"
+        return false
+    }
+
+    private fun nullPassword(): Boolean {
+        binding.loginPassword.error = "Password wajib diisi"
+        return false
+    }
+
+    private fun correctEmailOrUsername(): Boolean {
+        binding.emailOrUsername.isErrorEnabled = false
+        return true
+    }
+
+    private fun correctPassword(): Boolean {
+        binding.loginPassword.isErrorEnabled = false
+        return true
+    }
+
+    private fun spannable() {
         val spannable = SpannableStringBuilder(binding.textRegister.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
         val clickableSpan = object : ClickableSpan() {
@@ -49,63 +154,11 @@ class LoginFragment : Fragment() {
         spannable.setSpan(clickableSpan, 18, 31, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         binding.textRegister.text = spannable
         binding.textRegister.movementMethod = LinkMovementMethod.getInstance()
+    }
 
-        binding.tfEmailOrUsername.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if ((s?.length ?: 0) < 1) {
-                    binding.emailOrUsername.error = "Email atau Username wajib diisi"
-                    validationEmailOrUsername = false
-                } else {
-                    binding.emailOrUsername.isErrorEnabled = false
-                    validationEmailOrUsername = true
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-        binding.tfLoginPassword.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                if ((s?.length ?: 0) < 1) {
-                    binding.loginPassword.error = "Password wajib diisi"
-                    validationPassword = false
-                } else {
-                    binding.loginPassword.isErrorEnabled = false
-                    validationPassword = true
-                }
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-        })
-
-        binding.buttonMasuk.setOnClickListener {
-            if (!validationEmailOrUsername){
-                binding.emailOrUsername.error = "Email atau Username wajib diisi"
-            }
-
-            if (!validationPassword){
-                binding.loginPassword.error = "Password wajib diisi"
-            }
-
-            if (validationEmailOrUsername && validationPassword){
-                val intent = Intent(activity, MainActivity::class.java)
-                startActivity(intent)
-            }
-        }
-
-        return view
-
+    private fun binding(){
+        val intent = Intent(activity, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
