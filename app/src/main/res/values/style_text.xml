@@ -117,6 +117,7 @@
         <item name="lineHeight">@dimen/button_line_height</item>
         <item name="android:lineSpacingExtra">1sp</item>
         <item name="android:letterSpacing">-0.03</item>
+        <item name="cornerRadius">6dp</item>
     </style>
 
     <style name="TextAppearance.Footnote" parent="Base.TextAppearance.AppCompat">

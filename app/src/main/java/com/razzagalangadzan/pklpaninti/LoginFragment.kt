@@ -29,10 +29,14 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        view()
-
         return view
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        view()
     }
 
     private fun view() {
@@ -43,7 +47,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun emailOrUsername() {
-        binding.tfEmailOrUsername.addTextChangedListener(object : TextWatcher {
+        binding.tvEmailOrUsername.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if ((s?.length ?: 0) < 1) {
                     nullEmailOrUsername()
@@ -62,7 +66,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun password() {
-        binding.tfLoginPassword.addTextChangedListener(object : TextWatcher {
+        binding.tvPassword.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if ((s?.length ?: 0) < 1) {
                     nullPassword()
@@ -82,60 +86,58 @@ class LoginFragment : Fragment() {
     }
 
     private fun login() {
-        binding.buttonMasuk.setOnClickListener {
+        binding.btnLogin.setOnClickListener {
             validateNullUsernamePassword()
             validateNullPassword()
 
-            if (validateNullUsernamePassword() && validateNullPassword()){
-                binding()
-            }
+            if (validateNullUsernamePassword() && validateNullPassword()) binding()
         }
     }
 
     private fun validateNullUsernamePassword(): Boolean {
-        if (binding.tfEmailOrUsername.length() == 0){
+        validUser = if (binding.tvEmailOrUsername.length() == 0){
             nullEmailOrUsername()
-            validUser = false
+            false
         } else {
-            validUser = true
+            true
         }
 
         return validUser
     }
 
     private fun validateNullPassword(): Boolean {
-        if (binding.tfLoginPassword.length() == 0){
+        validPass = if (binding.tvPassword.length() == 0){
             nullPassword()
-            validPass = false
+            false
         } else {
-            validPass = true
+            true
         }
 
         return validPass
     }
 
     private fun nullEmailOrUsername(): Boolean {
-        binding.emailOrUsername.error = "Email atau Username wajib diisi"
+        binding.txtEmailOrUsername.error = "Email atau Username wajib diisi"
         return false
     }
 
     private fun nullPassword(): Boolean {
-        binding.loginPassword.error = "Password wajib diisi"
+        binding.txtPaswword.error = "Password wajib diisi"
         return false
     }
 
     private fun correctEmailOrUsername(): Boolean {
-        binding.emailOrUsername.isErrorEnabled = false
+        binding.txtEmailOrUsername.isErrorEnabled = false
         return true
     }
 
     private fun correctPassword(): Boolean {
-        binding.loginPassword.isErrorEnabled = false
+        binding.txtPaswword.isErrorEnabled = false
         return true
     }
 
     private fun spannable() {
-        val spannable = SpannableStringBuilder(binding.textRegister.text.toString())
+        val spannable = SpannableStringBuilder(binding.tvTextRegister.text.toString())
         val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
@@ -152,8 +154,8 @@ class LoginFragment : Fragment() {
 
         spannable.setSpan(blueColor, 18, 31, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannable.setSpan(clickableSpan, 18, 31, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.textRegister.text = spannable
-        binding.textRegister.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvTextRegister.text = spannable
+        binding.tvTextRegister.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun binding(){
