@@ -29,6 +29,7 @@ class RegisterFragment : Fragment() {
     val minUserRegex = "^.{6,}$"
     val passCharacterRegex = "^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]{6,}$"
     val userSymbolRegex = "[a-zA-Z0-9._]+"
+    val onlyCharacterRegex = "[A-Za-z '-]+"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +52,7 @@ class RegisterFragment : Fragment() {
         _binding = null
     }
 
-    private fun view(){
+    private fun view() {
         spannable()
         fullnameTextWatcher()
         usernameTextWatcher()
@@ -88,12 +89,16 @@ class RegisterFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
                 if ((s?.length ?: 0) < 1) {
                     nullFullName()
-                } else if (s.toString().matches(minNameRegex.toRegex())) {
-                    clearFullName()
-                } else {
+                } else if (!(s.toString().matches(minNameRegex.toRegex()))) {
                     regexMinFullname()
+                } else if (!(s.toString().matches(onlyCharacterRegex.toRegex()))) {
+                    regexOnlyCharacter()
+                } else {
+                    clearFullName()
                 }
             }
+
+//            TODO : Regex buat Character onlynya belum selesai
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -207,16 +212,16 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun validationAllData(){
+    private fun validationAllData() {
         nullCheck()
         validationTrue()
     }
 
-    private fun validationTrue(){
+    private fun validationTrue() {
         if (isNullFullName() && isNullUsername() && isNullEmailAddress() && isNullPassword() && isNullConfirmPassword()) binding()
     }
 
-    private fun nullCheck(){
+    private fun nullCheck() {
         isNullFullName()
         isNullUsername()
         isNullEmailAddress()
@@ -225,7 +230,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isNullFullName(): Boolean {
-        isNullFullName = if (binding.tvFullName.length() == 0){
+        isNullFullName = if (binding.tvFullName.length() == 0) {
             nullFullName()
             false
         } else {
@@ -236,7 +241,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isNullUsername(): Boolean {
-        isNullUsername = if (binding.tvUsername.length() == 0){
+        isNullUsername = if (binding.tvUsername.length() == 0) {
             nullUsername()
             false
         } else {
@@ -247,7 +252,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isNullEmailAddress(): Boolean {
-        isNullEmailAddress = if (binding.tvEmailAddress.length() == 0){
+        isNullEmailAddress = if (binding.tvEmailAddress.length() == 0) {
             nullEmailAddress()
             false
         } else {
@@ -258,7 +263,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isNullPassword(): Boolean {
-        isNullPassword = if (binding.tvPassword.length() == 0){
+        isNullPassword = if (binding.tvPassword.length() == 0) {
             nullPassword()
             false
         } else {
@@ -269,7 +274,7 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isNullConfirmPassword(): Boolean {
-        isNullConfirmPassword = if (binding.tvConfirmPassword.length() == 0){
+        isNullConfirmPassword = if (binding.tvConfirmPassword.length() == 0) {
             nullConfirmPassword()
             false
         } else {
@@ -286,36 +291,49 @@ class RegisterFragment : Fragment() {
 
     private fun nullFullName(): Boolean {
         binding.txtFullName.error = "Nama lengkap wajib diisi!"
+        errorBorderFullName()
         return false
     }
 
     private fun nullUsername(): Boolean {
         binding.txtUsername.error = "Username wajib diisi!"
+        errorBorderUsername()
         return false
     }
 
     private fun nullEmailAddress(): Boolean {
         binding.txtEmailAddress.error = "Email wajib diisi!"
+        errorBorderEmail()
         return false
     }
 
     private fun nullPassword(): Boolean {
         binding.txtPassword.error = "Password wajib diisi!"
+        errorBorderPassword()
         return false
     }
 
     private fun nullConfirmPassword(): Boolean {
         binding.txtConfirmPassword.error = "Konfirmasi Password wajib diisi!"
+        errorBorderConfirmPassword()
+        return false
+    }
+
+    private fun regexOnlyCharacter(): Boolean {
+        binding.txtFullName.error = "Tidak boleh mengandung unsur angka"
+        errorBorderFullName()
         return false
     }
 
     private fun regexMinFullname(): Boolean {
         binding.txtFullName.error = "Nama lengkap minimal 2 karakter"
+        errorBorderFullName()
         return false
     }
 
     private fun regexMinUsername(): Boolean {
         binding.txtUsername.error = "Username minimal 6 karakter"
+        errorBorderUsername()
         return false
     }
 
@@ -325,47 +343,96 @@ class RegisterFragment : Fragment() {
 
     private fun regexEmailAddressResult(): Boolean {
         binding.txtEmailAddress.error = "Format email tidak sesuai"
+        errorBorderEmail()
         return false
     }
 
     private fun regexPassword(): Boolean {
         binding.txtPassword.error =
             "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
+        errorBorderPassword()
         return false
     }
 
     private fun regexSymbolUsername(): Boolean {
         binding.txtUsername.error = "Username tidak bisa menggunakan simbol selain . dan _"
+        errorBorderUsername()
         return false
     }
 
     private fun validatePassword(): Boolean {
         binding.txtConfirmPassword.error = "Konfirmasi password tidak sesuai!"
+        errorBorderConfirmPassword()
         return false
     }
 
     private fun clearFullName(): Boolean {
         binding.txtFullName.isErrorEnabled = false
+        defaultBorderFullName()
         return true
     }
 
     private fun clearUsername(): Boolean {
         binding.txtUsername.isErrorEnabled = false
+        defaultBorderUsername()
         return true
     }
 
     private fun clearEmailAddress(): Boolean {
         binding.txtEmailAddress.isErrorEnabled = false
+        defaultBorderEmail()
         return true
     }
 
     private fun clearPassword(): Boolean {
         binding.txtPassword.isErrorEnabled = false
+        defaultBorderPassword()
         return true
     }
 
     private fun clearConfirmPassword(): Boolean {
         binding.txtConfirmPassword.isErrorEnabled = false
+        defaultBorderConfirmPassword()
         return true
+    }
+
+    private fun defaultBorderFullName() {
+        binding.tvFullName.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun defaultBorderUsername() {
+        binding.tvUsername.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun defaultBorderEmail(){
+        binding.tvEmailAddress.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun defaultBorderPassword() {
+        binding.tvPassword.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun defaultBorderConfirmPassword() {
+        binding.tvConfirmPassword.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun errorBorderFullName(){
+        binding.tvFullName.setBackgroundResource(R.drawable.bg_white_red_outline)
+    }
+
+    private fun errorBorderUsername() {
+        binding.tvUsername.setBackgroundResource(R.drawable.bg_white_red_outline)
+    }
+
+    private fun errorBorderEmail() {
+        binding.tvEmailAddress.setBackgroundResource(R.drawable.bg_white_red_outline)
+    }
+
+    private fun errorBorderPassword() {
+        binding.tvPassword.setBackgroundResource(R.drawable.bg_white_red_outline)
+    }
+
+    private fun errorBorderConfirmPassword(){
+        binding.tvConfirmPassword.setBackgroundResource(R.drawable.bg_white_red_outline)
     }
 }

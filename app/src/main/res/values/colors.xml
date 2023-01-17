@@ -14,4 +14,6 @@
     <color name="label_primary">#0C1517</color>
     <color name="gray100">#E5E5EA</color>
     <color name="blue1">#2F80ED</color>
+    <color name="alert_error">#FF4444</color>
+    <color name="label_tertiary">#C5C5C7</color>
 </resources>

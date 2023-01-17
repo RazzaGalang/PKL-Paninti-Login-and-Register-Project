@@ -20,4 +20,9 @@
     <string name="gender_female">Perempuan</string>
     <string name="or">Atau</string>
     <string name="email_or_username">Email atau Username</string>
+    <string name="placeholder_fullname">Masukan Nama Lengkap</string>
+    <string name="placeholder_username">Masukan Username</string>
+    <string name="placeholder_email">Masukan Email</string>
+    <string name="placeholder_password">Masukan Password</string>
+    <string name="placeholder_confirm_password">Masukan Password kembali</string>
 </resources>

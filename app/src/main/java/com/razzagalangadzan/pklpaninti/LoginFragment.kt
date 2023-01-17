@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
                 if ((s?.length ?: 0) < 1) {
                     nullEmailOrUsername()
                 } else {
-                    correctEmailOrUsername()
+                    clearEmailOrUsername()
                 }
             }
 
@@ -71,7 +71,7 @@ class LoginFragment : Fragment() {
                 if ((s?.length ?: 0) < 1) {
                     nullPassword()
                 } else {
-                    correctPassword()
+                    clearPassword()
                 }
             }
 
@@ -95,7 +95,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateNullUsernamePassword(): Boolean {
-        validUser = if (binding.tvEmailOrUsername.length() == 0){
+        validUser = if (binding.tvEmailOrUsername.length() == 0) {
             nullEmailOrUsername()
             false
         } else {
@@ -106,7 +106,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateNullPassword(): Boolean {
-        validPass = if (binding.tvPassword.length() == 0){
+        validPass = if (binding.tvPassword.length() == 0) {
             nullPassword()
             false
         } else {
@@ -118,22 +118,42 @@ class LoginFragment : Fragment() {
 
     private fun nullEmailOrUsername(): Boolean {
         binding.txtEmailOrUsername.error = "Email atau Username wajib diisi"
+        errorBorderEmailOrUsername()
         return false
     }
 
     private fun nullPassword(): Boolean {
         binding.txtPaswword.error = "Password wajib diisi"
+        errorBorderPassword()
         return false
     }
 
-    private fun correctEmailOrUsername(): Boolean {
+    private fun clearEmailOrUsername(): Boolean {
         binding.txtEmailOrUsername.isErrorEnabled = false
+        defaultBorderEmailOrUsername()
         return true
     }
 
-    private fun correctPassword(): Boolean {
+    private fun clearPassword(): Boolean {
         binding.txtPaswword.isErrorEnabled = false
+        defaultBorderPassword()
         return true
+    }
+
+    private fun defaultBorderEmailOrUsername() {
+        binding.tvEmailOrUsername.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun defaultBorderPassword() {
+        binding.tvPassword.setBackgroundResource(R.drawable.slr_outline_button_border)
+    }
+
+    private fun errorBorderEmailOrUsername() {
+        binding.tvEmailOrUsername.setBackgroundResource(R.drawable.bg_white_red_outline)
+    }
+
+    private fun errorBorderPassword() {
+        binding.tvPassword.setBackgroundResource(R.drawable.bg_white_red_outline)
     }
 
     private fun spannable() {
@@ -158,7 +178,7 @@ class LoginFragment : Fragment() {
         binding.tvTextRegister.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun binding(){
+    private fun binding() {
         val intent = Intent(activity, MainActivity::class.java)
         startActivity(intent)
     }

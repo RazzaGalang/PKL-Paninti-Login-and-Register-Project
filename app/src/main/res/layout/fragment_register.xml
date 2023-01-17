@@ -27,39 +27,41 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtFullName"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
                 android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/full_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_header">
+                app:layout_constraintTop_toBottomOf="@id/img_header"
+                app:placeholderText="@string/placeholder_fullname">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvFullName"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="textCapWords" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtUsername"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
                 android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/username"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtFullName">
+                app:layout_constraintTop_toBottomOf="@+id/txtFullName"
+                app:placeholderText="@string/placeholder_username">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvUsername"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -68,18 +70,19 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtEmailAddress"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
                 android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/email_address"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtUsername">
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                app:placeholderText="@string/placeholder_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvEmailAddress"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
@@ -88,7 +91,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtPassword"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
@@ -96,11 +99,12 @@
                 android:hint="@string/password"
                 app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress">
+                app:layout_constraintTop_toBottomOf="@+id/txtEmailAddress"
+                app:placeholderText="@string/placeholder_password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvPassword"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -109,7 +113,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtConfirmPassword"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
@@ -117,11 +121,12 @@
                 android:hint="@string/confirm_password"
                 app:endIconMode="password_toggle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtPassword">
+                app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+                app:placeholderText="@string/placeholder_confirm_password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvConfirmPassword"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />

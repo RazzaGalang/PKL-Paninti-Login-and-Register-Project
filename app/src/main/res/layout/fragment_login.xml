@@ -41,27 +41,27 @@
                 style="@style/TextAppearance.Subtitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome_parents"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:text="@string/welcome_parents"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/img_illustration" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtEmailOrUsername"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/normal_margin"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/email_or_username"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/main_title"
-                app:placeholderText="cont: hilda@paninti.com">
+                app:placeholderText="Masukan Email atau Username">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvEmailOrUsername"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text" />
@@ -71,19 +71,20 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtPaswword"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.ParentingHub.TextInputLayout.FilledBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/normal_margin"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtEmailOrUsername"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:placeholderText="Masukan Password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tvPassword"
-                    style="@style/TextAppearance.Body2"
+                    style="@style/Widget.ParentingHub.TextInputEditText.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/open_sans"
@@ -96,8 +97,8 @@
                 style="@style/TextAppearance.Caption1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/normal_margin"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:layout_marginVertical="@dimen/normal_margin"
                 android:text="@string/forgot_password"
                 android:textAlignment="textEnd"
                 android:textColor="@color/label_secondary"
@@ -109,8 +110,8 @@
                 style="@style/TextAppearance.Button"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:layout_marginVertical="@dimen/button_padding_vertical"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:layout_marginVertical="@dimen/button_padding_vertical"
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -120,8 +121,8 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="@dimen/normal_margin"
                 android:layout_marginHorizontal="@dimen/screen_margin"
+                android:layout_marginTop="@dimen/normal_margin"
                 app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -142,8 +143,8 @@
                 android:id="@+id/btnContinueGoogle"
                 style="@style/TextAppearance.Button"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/screen_margin"
                 android:layout_height="56dp"
+                android:layout_marginHorizontal="@dimen/screen_margin"
                 android:layout_marginVertical="@dimen/button_padding_vertical"
                 android:backgroundTint="@color/white"
                 android:text="@string/continue_google"
