@@ -1,7 +1,7 @@
 package com.razzagalangadzan.pklpaninti
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.*
 import android.text.method.LinkMovementMethod
@@ -62,9 +62,10 @@ class RegisterFragment : Fragment() {
         signUpClicked()
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun spannable() {
         val spannable = SpannableStringBuilder(binding.textLogin.text.toString())
-        val blueColor = ForegroundColorSpan(Color.parseColor("#55BCE0"))
+        val blueColor = ForegroundColorSpan(R.color.primary500)
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 val fragment = LoginFragment()
