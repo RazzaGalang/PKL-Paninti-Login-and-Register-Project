@@ -291,78 +291,77 @@ class RegisterFragment : Fragment() {
     }
 
     private fun nullFullName(): Boolean {
-        binding.txtFullName.error = "Nama lengkap wajib diisi!"
+        binding.txtFullName.error = R.string.error_text_null_fullname.toString()
         errorBorderFullName()
         return false
     }
 
     private fun nullUsername(): Boolean {
-        binding.txtUsername.error = "Username wajib diisi!"
+        binding.txtUsername.error = R.string.error_text_null_username.toString()
         errorBorderUsername()
         return false
     }
 
     private fun nullEmailAddress(): Boolean {
-        binding.txtEmailAddress.error = "Email wajib diisi!"
+        binding.txtEmailAddress.error = R.string.error_text_null_email_address.toString()
         errorBorderEmail()
         return false
     }
 
     private fun nullPassword(): Boolean {
-        binding.txtPassword.error = "Password wajib diisi!"
+        binding.txtPassword.error = R.string.error_text_null_password.toString()
         errorBorderPassword()
         return false
     }
 
     private fun nullConfirmPassword(): Boolean {
-        binding.txtConfirmPassword.error = "Konfirmasi Password wajib diisi!"
+        binding.txtConfirmPassword.error = R.string.error_text_null_confirm_password.toString()
         errorBorderConfirmPassword()
         return false
     }
 
     private fun regexOnlyCharacter(): Boolean {
-        binding.txtFullName.error = "Tidak boleh mengandung unsur angka"
+        binding.txtFullName.error = R.string.error_text_regex_only_character.toString()
         errorBorderFullName()
         return false
     }
 
     private fun regexMinFullname(): Boolean {
-        binding.txtFullName.error = "Nama lengkap minimal 2 karakter"
+        binding.txtFullName.error = R.string.error_text_regex_min_fullname.toString()
         errorBorderFullName()
         return false
     }
 
     private fun regexMinUsername(): Boolean {
-        binding.txtUsername.error = "Username minimal 6 karakter"
+        binding.txtUsername.error = R.string.error_text_regex_min_username.toString()
         errorBorderUsername()
         return false
     }
 
     private fun regexEmailAddress(target: CharSequence?): Boolean {
-        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target.toString()).matches()
     }
 
     private fun regexEmailAddressResult(): Boolean {
-        binding.txtEmailAddress.error = "Format email tidak sesuai"
+        binding.txtEmailAddress.error = R.string.error_text_regex_format_email.toString()
         errorBorderEmail()
         return false
     }
 
     private fun regexPassword(): Boolean {
-        binding.txtPassword.error =
-            "Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka"
+        binding.txtPassword.error = R.string.error_text_regex_password.toString()
         errorBorderPassword()
         return false
     }
 
     private fun regexSymbolUsername(): Boolean {
-        binding.txtUsername.error = "Username tidak bisa menggunakan simbol selain . dan _"
+        binding.txtUsername.error = R.string.error_text_regex_symbol_username.toString()
         errorBorderUsername()
         return false
     }
 
     private fun validatePassword(): Boolean {
-        binding.txtConfirmPassword.error = "Konfirmasi password tidak sesuai!"
+        binding.txtConfirmPassword.error = R.string.error_text_validate_password.toString()
         errorBorderConfirmPassword()
         return false
     }

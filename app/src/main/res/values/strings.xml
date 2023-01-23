@@ -25,4 +25,19 @@
     <string name="placeholder_email">Masukan Email</string>
     <string name="placeholder_password">Masukan Password</string>
     <string name="placeholder_confirm_password">Masukan Password kembali</string>
+
+
+    <string name="error_text_null_email_and_username">Email atau Username wajib diisi</string>
+    <string name="error_text_null_password">Password wajib diisi</string>
+    <string name="error_text_null_fullname">Nama lengkap wajib diisi!</string>
+    <string name="error_text_null_username">Username wajib diisi!</string>
+    <string name="error_text_null_email_address">Email wajib diisi!</string>
+    <string name="error_text_null_confirm_password">Konfirmasi Password wajib diisi!</string>
+    <string name="error_text_regex_only_character">Tidak boleh mengandung unsur angka</string>
+    <string name="error_text_regex_min_fullname">Nama lengkap minimal 2 karakter</string>
+    <string name="error_text_regex_min_username">Username minimal 6 karakter</string>
+    <string name="error_text_regex_format_email">Format email tidak sesuai</string>
+    <string name="error_text_regex_password">Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka</string>
+    <string name="error_text_regex_symbol_username">Username tidak bisa menggunakan simbol selain . dan _</string>
+    <string name="error_text_validate_password">Konfirmasi password tidak sesuai!</string>
 </resources>

@@ -117,13 +117,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun nullEmailOrUsername(): Boolean {
-        binding.txtEmailOrUsername.error = "Email atau Username wajib diisi"
+        binding.txtEmailOrUsername.error = R.string.error_text_null_email_and_username.toString()
         errorBorderEmailOrUsername()
         return false
     }
 
     private fun nullPassword(): Boolean {
-        binding.txtPaswword.error = "Password wajib diisi"
+        binding.txtPaswword.error = R.string.error_text_null_password.toString()
         errorBorderPassword()
         return false
     }

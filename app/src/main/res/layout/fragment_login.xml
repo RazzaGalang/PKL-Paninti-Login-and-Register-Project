@@ -29,7 +29,7 @@
                 android:id="@+id/img_illustration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="80dp"
+                android:paddingHorizontal="80dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/img_login"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTextRegister"
-                style="@style/TextAppearance.Caption1"
+                android:textAppearance="@style/TextAppearance.Caption1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/screen_margin"
