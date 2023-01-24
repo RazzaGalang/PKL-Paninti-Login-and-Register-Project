@@ -1,4 +1,4 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.LoginAndRegister
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.razzagalangadzan.pklpaninti.MainActivity
+import com.razzagalangadzan.pklpaninti.R
 import com.razzagalangadzan.pklpaninti.databinding.FragmentLoginBinding
 
 
@@ -117,13 +119,13 @@ class LoginFragment : Fragment() {
     }
 
     private fun nullEmailOrUsername(): Boolean {
-        binding.txtEmailOrUsername.error = R.string.error_text_null_email_and_username.toString()
+        binding.txtEmailOrUsername.error = getText(R.string.error_text_null_username)
         errorBorderEmailOrUsername()
         return false
     }
 
     private fun nullPassword(): Boolean {
-        binding.txtPaswword.error = R.string.error_text_null_password.toString()
+        binding.txtPassword.error = getText(R.string.error_text_null_password)
         errorBorderPassword()
         return false
     }
@@ -135,7 +137,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun clearPassword(): Boolean {
-        binding.txtPaswword.isErrorEnabled = false
+        binding.txtPassword.isErrorEnabled = false
         defaultBorderPassword()
         return true
     }

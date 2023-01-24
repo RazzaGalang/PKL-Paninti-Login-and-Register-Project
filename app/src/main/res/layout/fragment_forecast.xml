@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/forecast_dark"
+    tools:context=".ForecastFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/centerHorizontalGuideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvGradient"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero_dp"
+            app:layout_constraintBottom_toTopOf="@+id/centerHorizontalGuideLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/screen_margin">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/centerVerticalGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/menuVertical"
+                    android:layout_width="@dimen/icon_bookmark_height"
+                    android:layout_height="@dimen/icon_bookmark_height"
+                    android:src="@drawable/ic_menu_vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvFragmentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_seven_days"
+                    android:drawableStart="@drawable/ic_calendar_two"
+                    android:drawablePadding="@dimen/normal_margin"
+                    android:textAppearance="@style/TextAppearance.Forecast.HugeMavenPro"
+                    app:layout_constraintBottom_toTopOf="@+id/tvFragmentEvent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageFragmentMainIllustration"
+                    android:layout_width="@dimen/zero_dp"
+                    android:layout_height="@dimen/zero_dp"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="@dimen/large_margin"
+                    android:src="@drawable/ic_cloudy"
+                    app:layout_constraintBottom_toTopOf="@id/divFragmentDivider"
+                    app:layout_constraintEnd_toStartOf="@+id/centerVerticalGuideline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFragmentTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvFragmentEvent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_tommorow"
+                    android:textAppearance="@style/TextAppearance.Forecast.DefaultOpenSans"
+                    app:layout_constraintBottom_toTopOf="@+id/tvMaxTemp"
+                    app:layout_constraintStart_toEndOf="@id/centerVerticalGuideline" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvMaxTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy_max_temp"
+                    android:textAppearance="@style/TextAppearance.Forecast.MaxTemp"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDescription"
+                    app:layout_constraintStart_toEndOf="@id/centerVerticalGuideline" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvMinTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_dummy_min_temp"
+                    android:textAppearance="@style/TextAppearance.Forecast.MinTemp"
+                    app:layout_constraintBottom_toTopOf="@id/tvDescription"
+                    app:layout_constraintStart_toEndOf="@id/tvMaxTemp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/screen_margin"
+                    android:text="@string/text_cloudy"
+                    android:textAppearance="@style/TextAppearance.Forecast.DefaultMavenPro"
+                    app:layout_constraintBottom_toTopOf="@+id/divFragmentDivider"
+                    app:layout_constraintStart_toEndOf="@id/centerVerticalGuideline" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divFragmentDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/screen_margin"
+                    android:layout_marginVertical="@dimen/screen_margin"
+                    app:dividerColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/imageHumidity" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageWind"
+                    android:layout_width="75dp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_wind"
+                    app:layout_constraintBottom_toTopOf="@id/tvDescWind"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescWind"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/text_desc_wind"
+                    android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
+                    app:layout_constraintBottom_toTopOf="@id/tvInfoWind"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvInfoWind"
+                    android:layout_width="75dp"
+                    android:layout_height="@dimen/huge_margin"
+                    android:gravity="center|top"
+                    android:text="@string/text_info_wind"
+                    android:textAppearance="@style/TextAppearance.Forecast.BiasOpenSans"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageHumidity"
+                    android:layout_width="75dp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_invert_colors"
+                    app:layout_constraintBottom_toTopOf="@id/tvDescHumidity"
+                    app:layout_constraintEnd_toStartOf="@+id/imageChanceOfRain"
+                    app:layout_constraintStart_toEndOf="@id/imageWind" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescHumidity"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/text_desc_humidity"
+                    android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
+                    app:layout_constraintBottom_toTopOf="@id/tvInfoHumidity"
+                    app:layout_constraintEnd_toStartOf="@+id/tvDescChanceOfRain"
+                    app:layout_constraintStart_toEndOf="@id/tvDescWind" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvInfoHumidity"
+                    android:layout_width="75dp"
+                    android:layout_height="@dimen/huge_margin"
+                    android:gravity="center|top"
+                    android:text="@string/text_info_humidity"
+                    android:textAppearance="@style/TextAppearance.Forecast.BiasOpenSans"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvInfoChanceOfRain"
+                    app:layout_constraintStart_toEndOf="@id/tvInfoWind" />
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageChanceOfRain"
+                    android:layout_width="75dp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_moisture"
+                    app:layout_constraintBottom_toTopOf="@id/tvDescChanceOfRain"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDescChanceOfRain"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/text_desc_chance_of_rain"
+                    android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
+                    app:layout_constraintBottom_toTopOf="@id/tvInfoChanceOfRain"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvInfoChanceOfRain"
+                    android:layout_width="75dp"
+                    android:layout_height="@dimen/huge_margin"
+                    android:gravity="center"
+                    android:text="@string/text_info_chance_of_rain"
+                    android:textAppearance="@style/TextAppearance.Forecast.BiasOpenSans"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvWeekForecast"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/zero_dp"
+            android:layout_margin="@dimen/screen_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/centerHorizontalGuideLine"
+            tools:itemCount="7"
+            tools:listitem="@layout/item_forecast_week" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

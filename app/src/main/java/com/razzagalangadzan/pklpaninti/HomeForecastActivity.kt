@@ -6,22 +6,22 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
-class LoginAndRegisterActivity : AppCompatActivity() {
+class HomeForecastActivity : AppCompatActivity() {
 
     private var pressedTime: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.statusBarColor = resources.getColor(R.color.primary500, this.theme)
+            window.statusBarColor = resources.getColor(R.color.forecast_blue_start, this.theme)
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = resources.getColor(R.color.white)
+            window.statusBarColor = resources.getColor(R.color.forecast_blue_start)
         }
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_and_register)
+        setContentView(R.layout.activity_home_forecast)
 
-        replaceFragment(LoginFragment())
+        replaceFragment(ForecastHomeFragment())
     }
 
     override fun onBackPressed() {

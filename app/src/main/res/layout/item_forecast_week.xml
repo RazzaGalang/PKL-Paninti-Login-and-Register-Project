@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/medium_margin">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/firstGuideline"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.45"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/secondGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/firstGuideline"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvRvDay"
+        android:textAppearance="@style/TextAppearance.Forecast.RecylerItemDayText"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/firstGuideline"
+        android:text="Monday"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgRvIllustration"
+        android:layout_width="@dimen/icon_height"
+        android:layout_height="@dimen/icon_height"
+        android:src="@drawable/ic_cloud"
+        app:layout_constraintStart_toEndOf="@id/firstGuideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvRvDescription"
+        android:textAppearance="@style/TextAppearance.Forecast.RecylerItemDescText."
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/secondGuideline"
+        app:layout_constraintStart_toEndOf="@id/imgRvIllustration"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:text="Cloudy"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvRvTemperature"
+        android:layout_width="@dimen/zero_dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.Forecast.RecylerItemTempText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/secondGuideline"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="29°"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

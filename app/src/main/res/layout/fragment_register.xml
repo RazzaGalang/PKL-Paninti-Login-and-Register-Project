@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterFragment">
+    tools:context=".LoginAndRegister.RegisterFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/img_header"
+                android:id="@+id/imgHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -34,7 +34,7 @@
                 android:layout_marginVertical="@dimen/normal_margin"
                 android:hint="@string/full_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_header"
+                app:layout_constraintTop_toBottomOf="@id/imgHeader"
                 app:placeholderText="@string/placeholder_fullname">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -134,7 +134,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_gender"
+                android:id="@+id/tvGender"
                 style="@style/TextAppearance.Body2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,16 +145,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtConfirmPassword" />
 
             <RadioGroup
-                android:id="@+id/radio_group"
+                android:id="@+id/rgGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/screen_margin"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_gender">
+                app:layout_constraintTop_toBottomOf="@+id/tvGender">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/rbMale"
-                    style="@style/TextAppearance.Body2"
+                    android:textAppearance="@style/TextAppearance.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
@@ -164,7 +164,7 @@
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/rbFemale"
-                    style="@style/TextAppearance.Body2"
+                    android:textAppearance="@style/TextAppearance.Body2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/gender_female"
@@ -174,14 +174,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSignUp"
-                style="@style/TextAppearance.Button"
+                android:textAppearance="@style/TextAppearance.Button"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginHorizontal="@dimen/screen_margin"
                 android:text="@string/sign_up"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/radio_group" />
+                app:layout_constraintTop_toBottomOf="@+id/rgGender" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/divider"
@@ -192,7 +192,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/TextAppearance.Caption1"
+                android:textAppearance="@style/TextAppearance.Caption1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -207,7 +207,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnContinueGoogle"
-                style="@style/TextAppearance.Button"
+                android:textAppearance="@style/TextAppearance.Button"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginHorizontal="@dimen/screen_margin"
@@ -224,9 +224,9 @@
                 app:strokeColor="@color/gray100"
                 app:strokeWidth="1dp" />
 
-            <TextView
-                android:id="@+id/text_login"
-                style="@style/TextAppearance.Caption1"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTextLogin"
+                android:textAppearance="@style/TextAppearance.Caption1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/screen_margin"

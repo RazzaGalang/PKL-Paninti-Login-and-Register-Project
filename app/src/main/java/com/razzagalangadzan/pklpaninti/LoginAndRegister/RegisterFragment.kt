@@ -1,4 +1,4 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.LoginAndRegister
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.razzagalangadzan.pklpaninti.MainActivity
+import com.razzagalangadzan.pklpaninti.R
 import com.razzagalangadzan.pklpaninti.databinding.FragmentRegisterBinding
 
 
@@ -64,7 +66,7 @@ class RegisterFragment : Fragment() {
 
     @SuppressLint("ResourceAsColor")
     private fun spannable() {
-        val spannable = SpannableStringBuilder(binding.textLogin.text.toString())
+        val spannable = SpannableStringBuilder(binding.tvTextLogin.text.toString())
         val blueColor = ForegroundColorSpan(R.color.primary500)
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
@@ -81,8 +83,8 @@ class RegisterFragment : Fragment() {
 
         spannable.setSpan(blueColor, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannable.setSpan(clickableSpan, 18, 32, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.textLogin.text = spannable
-        binding.textLogin.movementMethod = LinkMovementMethod.getInstance()
+        binding.tvTextLogin.text = spannable
+        binding.tvTextLogin.movementMethod = LinkMovementMethod.getInstance()
     }
 
     private fun fullnameTextWatcher() {
@@ -291,49 +293,49 @@ class RegisterFragment : Fragment() {
     }
 
     private fun nullFullName(): Boolean {
-        binding.txtFullName.error = R.string.error_text_null_fullname.toString()
+        binding.txtFullName.error = getText(R.string.error_text_null_fullname)
         errorBorderFullName()
         return false
     }
 
     private fun nullUsername(): Boolean {
-        binding.txtUsername.error = R.string.error_text_null_username.toString()
+        binding.txtUsername.error = getText(R.string.error_text_null_username)
         errorBorderUsername()
         return false
     }
 
     private fun nullEmailAddress(): Boolean {
-        binding.txtEmailAddress.error = R.string.error_text_null_email_address.toString()
+        binding.txtEmailAddress.error = getText(R.string.error_text_null_email_address)
         errorBorderEmail()
         return false
     }
 
     private fun nullPassword(): Boolean {
-        binding.txtPassword.error = R.string.error_text_null_password.toString()
+        binding.txtPassword.error = getText(R.string.error_text_null_password)
         errorBorderPassword()
         return false
     }
 
     private fun nullConfirmPassword(): Boolean {
-        binding.txtConfirmPassword.error = R.string.error_text_null_confirm_password.toString()
+        binding.txtConfirmPassword.error = getText(R.string.error_text_null_confirm_password)
         errorBorderConfirmPassword()
         return false
     }
 
     private fun regexOnlyCharacter(): Boolean {
-        binding.txtFullName.error = R.string.error_text_regex_only_character.toString()
+        binding.txtFullName.error = getText(R.string.error_text_regex_only_character)
         errorBorderFullName()
         return false
     }
 
     private fun regexMinFullname(): Boolean {
-        binding.txtFullName.error = R.string.error_text_regex_min_fullname.toString()
+        binding.txtFullName.error = getText(R.string.error_text_regex_min_fullname)
         errorBorderFullName()
         return false
     }
 
     private fun regexMinUsername(): Boolean {
-        binding.txtUsername.error = R.string.error_text_regex_min_username.toString()
+        binding.txtUsername.error = getText(R.string.error_text_regex_min_username)
         errorBorderUsername()
         return false
     }
@@ -343,25 +345,25 @@ class RegisterFragment : Fragment() {
     }
 
     private fun regexEmailAddressResult(): Boolean {
-        binding.txtEmailAddress.error = R.string.error_text_regex_format_email.toString()
+        binding.txtEmailAddress.error = getText(R.string.error_text_regex_format_email)
         errorBorderEmail()
         return false
     }
 
     private fun regexPassword(): Boolean {
-        binding.txtPassword.error = R.string.error_text_regex_password.toString()
+        binding.txtPassword.error = getText(R.string.error_text_regex_password)
         errorBorderPassword()
         return false
     }
 
     private fun regexSymbolUsername(): Boolean {
-        binding.txtUsername.error = R.string.error_text_regex_symbol_username.toString()
+        binding.txtUsername.error = getText(R.string.error_text_regex_symbol_username)
         errorBorderUsername()
         return false
     }
 
     private fun validatePassword(): Boolean {
-        binding.txtConfirmPassword.error = R.string.error_text_validate_password.toString()
+        binding.txtConfirmPassword.error = getText(R.string.error_text_validate_password)
         errorBorderConfirmPassword()
         return false
     }

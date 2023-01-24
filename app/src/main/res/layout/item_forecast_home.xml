@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center_horizontal">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/normal_margin"
+        android:backgroundTint="@color/forecast_rv_cardview"
+        app:cardCornerRadius="@dimen/semi_huge_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/medium_margin">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvIntensity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_intensity"
+                android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageFragmentHomeIllustration"
+                android:layout_width="@dimen/image_brand_height"
+                android:layout_height="@dimen/image_brand_height"
+                android:src="@drawable/ic_cloud"
+                app:layout_constraintBottom_toTopOf="@+id/tvTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIntensity" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dummy_time"
+                android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

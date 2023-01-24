@@ -161,4 +161,143 @@
         <item name="android:lineSpacingExtra">-1sp</item>
         <item name="android:letterSpacing">-0.04</item>
     </style>
+
+
+    //Forecast
+
+    <style name="TextAppearance.Forecast.HugeMavenPro" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/maven_pro_bold</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.HugeOpenSans" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/opensans_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.CustomCurrentTemp" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textSize">76sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.CustomCurrentSituation" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textColor">@color/forecast_yellow</item>
+        <item name="android:fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.CustomCurrentDate" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/opensans_semibold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.DefaultOpenSans" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/opensans_semibold</item>
+        <item name="android:fontFamily">@font/opensans_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.MaxTemp" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro_medium</item>
+        <item name="android:fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textSize">64sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.MinTemp" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro_medium</item>
+        <item name="android:fontFamily">@font/maven_pro_medium</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.DefaultMavenPro" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro</item>
+        <item name="android:fontFamily">@font/maven_pro</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.SubOpenSans" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.BiasOpenSans" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <item name="android:textColor">@color/forecast_bias_white</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.RecylerItemDayText" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.RecylerItemDescText." parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/maven_pro</item>
+        <item name="android:fontFamily">@font/maven_pro</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+    <style name="TextAppearance.Forecast.RecylerItemTempText" parent="Base.TextAppearance.AppCompat">
+        <item name="fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="lineHeight">@dimen/button_height</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+
+
 </resources>

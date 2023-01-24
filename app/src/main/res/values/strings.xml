@@ -40,4 +40,24 @@
     <string name="error_text_regex_password">Password minimal berisi 6 karakter, 1 huruf kapital dan 1 angka</string>
     <string name="error_text_regex_symbol_username">Username tidak bisa menggunakan simbol selain . dan _</string>
     <string name="error_text_validate_password">Konfirmasi password tidak sesuai!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dummy_intensity">24%</string>
+    <string name="dummy_time">10:00</string>
+    <string name="text_info_chance_of_rain">Chance\nof Rain</string>
+    <string name="text_desc_chance_of_rain">82%</string>
+    <string name="text_info_humidity">Humidity</string>
+    <string name="text_desc_humidity">24%</string>
+    <string name="text_info_wind">Wind</string>
+    <string name="text_desc_wind">13 km/h</string>
+    <string name="text_cloudy">Cloudy</string>
+    <string name="text_dummy_min_temp">/17°</string>
+    <string name="text_dummy_max_temp">24</string>
+    <string name="text_tommorow">Tomorrow</string>
+    <string name="text_seven_days">7 Days</string>
+    <string name="text_today">Today</string>
+    <string name="text_today_date">Monday, 17 May</string>
+    <string name="dummy_current_temp">29°</string>
+    <string name="dummy_location">Minks</string>
+    <string name="text_celcius">°C</string>
 </resources>
