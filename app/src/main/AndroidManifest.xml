@@ -27,7 +27,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".HomeForecastActivity"
+            android:name=".Forecast.ForecastActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.Forecast.Event
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.razzagalangadzan.pklpaninti.R
 
-class ForecastAdapter(private val mList: List<ForecastData>) : RecyclerView.Adapter<ForecastAdapter.ViewHolder>() {
+class ForecastEventAdapter(private val mList: List<ForecastEventData>) : RecyclerView.Adapter<ForecastEventAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -2,6 +2,11 @@
 <resources>
     <dimen name="zero_dp">0dp</dimen>
 
+    <!--Custom-->
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="custom_icon_width">75dp</dimen>
+    <dimen name="custom_icon_height">30dp</dimen>
+
     <!-- Image options-->
     <dimen name="image_options_circle_radius">200dp</dimen>
     <dimen name="image_options_round_radius">4dp</dimen>

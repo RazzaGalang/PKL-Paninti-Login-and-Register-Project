@@ -150,7 +150,7 @@
                 android:text="@string/continue_google"
                 android:textAllCaps="false"
                 android:textColor="@color/label_secondary"
-                app:icon="@drawable/icon_google"
+                app:icon="@drawable/ic_google"
                 app:iconGravity="start"
                 app:iconSize="20dp"
                 app:iconTintMode="multiply"

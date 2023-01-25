@@ -1,4 +1,4 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.Forecast.Event
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.razzagalangadzan.pklpaninti.R
 import com.razzagalangadzan.pklpaninti.databinding.FragmentForecastBinding
 
-class ForecastFragment : Fragment() {
+class ForecastEventFragment : Fragment() {
 
 
     private var _binding: FragmentForecastBinding? = null
@@ -41,17 +42,17 @@ class ForecastFragment : Fragment() {
 
         recyclerview.layoutManager = LinearLayoutManager(this.context)
 
-        val data = ArrayList<ForecastData>()
+        val data = ArrayList<ForecastEventData>()
 
-        data.add(ForecastData("Monday", R.drawable.ic_cloud, "Cloudy", "29°"))
-        data.add(ForecastData("Tuesday", R.drawable.ic_cloud, "Cloudy", "24°"))
-        data.add(ForecastData("Wednesday", R.drawable.ic_rain, "Rainy", "17°"))
-        data.add(ForecastData("Thursday", R.drawable.ic_cloud_lighting, "Storm", "18°"))
-        data.add(ForecastData("Friday", R.drawable.ic_sun, "Sunny", "22°"))
-        data.add(ForecastData("Saturday", R.drawable.ic_sun, "Sunny", "24°"))
-        data.add(ForecastData("Sunday", R.drawable.ic_sun, "Sunny", "30°"))
+        data.add(ForecastEventData("Monday", R.drawable.ic_cloud, "Cloudy", "29°"))
+        data.add(ForecastEventData("Tuesday", R.drawable.ic_cloud, "Cloudy", "24°"))
+        data.add(ForecastEventData("Wednesday", R.drawable.ic_rain, "Rainy", "17°"))
+        data.add(ForecastEventData("Thursday", R.drawable.ic_cloud_lighting, "Storm", "18°"))
+        data.add(ForecastEventData("Friday", R.drawable.ic_sun, "Sunny", "22°"))
+        data.add(ForecastEventData("Saturday", R.drawable.ic_sun, "Sunny", "24°"))
+        data.add(ForecastEventData("Sunday", R.drawable.ic_sun, "Sunny", "30°"))
 
-        val adapter = ForecastAdapter(data)
+        val adapter = ForecastEventAdapter(data)
 
         recyclerview.adapter = adapter
     }

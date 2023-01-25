@@ -1,12 +1,14 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.Forecast
 
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.razzagalangadzan.pklpaninti.Forecast.Home.ForecastHomeFragment
+import com.razzagalangadzan.pklpaninti.R
 
-class HomeForecastActivity : AppCompatActivity() {
+class ForecastActivity : AppCompatActivity() {
 
     private var pressedTime: Long = 0
 

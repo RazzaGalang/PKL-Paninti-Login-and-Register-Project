@@ -1,4 +1,4 @@
-package com.razzagalangadzan.pklpaninti
+package com.razzagalangadzan.pklpaninti.Forecast.Home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.razzagalangadzan.pklpaninti.R
 
 class ForecastHomeAdapter(private val mList: List<ForecastHomeData>) : RecyclerView.Adapter<ForecastHomeAdapter.ViewHolder>() {
 
