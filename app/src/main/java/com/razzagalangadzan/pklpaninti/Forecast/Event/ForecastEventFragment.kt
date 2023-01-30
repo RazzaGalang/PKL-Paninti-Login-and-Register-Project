@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.razzagalangadzan.pklpaninti.Forecast.Home.ForecastHomeFragment
 import com.razzagalangadzan.pklpaninti.R
 import com.razzagalangadzan.pklpaninti.databinding.FragmentForecastBinding
+
 
 class ForecastEventFragment : Fragment() {
 
@@ -31,10 +33,19 @@ class ForecastEventFragment : Fragment() {
 
         setAdapter()
         setBackgroundGradientColor()
+        backToMain()
     }
 
     private fun setBackgroundGradientColor () {
         binding.cvGradient.setBackgroundResource(R.drawable.bg_gradient_forecast)
+    }
+
+    private fun backToMain(){
+        binding.icBackArrow.setOnClickListener {
+            val fragment = ForecastHomeFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.flFragment, fragment)?.commit()
+        }
     }
 
     private fun setAdapter (){

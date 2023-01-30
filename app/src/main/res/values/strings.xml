@@ -60,4 +60,5 @@
     <string name="dummy_current_temp">29°</string>
     <string name="dummy_location">Minks</string>
     <string name="text_celcius">°C</string>
+    <string name="day_monday">Monday</string>
 </resources>
