@@ -8,15 +8,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.razzagalangadzan.pklpaninti.Forecast.Home.ForecastHomeData
 import com.razzagalangadzan.pklpaninti.R
+import com.razzagalangadzan.pklpaninti.databinding.ItemEventForecastBinding
+import com.razzagalangadzan.pklpaninti.databinding.ItemHomeForecastBinding
 
 class ForecastEventAdapter : RecyclerView.Adapter<ForecastEventAdapter.ViewHolder>() {
 
-    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        var day : TextView = itemView.findViewById(R.id.tvRvDay)
-        var illustration : ImageView = itemView.findViewById(R.id.imgRvIllustration)
-        var description : TextView = itemView.findViewById(R.id.tvRvDescription)
-        var temperature : TextView = itemView.findViewById(R.id.tvRvTemperature)
+    private lateinit var binding: ItemEventForecastBinding
+    private val limit = 7
+
+    inner class ViewHolder : RecyclerView.ViewHolder(binding.root) {
+        fun setData(item : ForecastEventData){
+            binding.apply {
+                tvRvDay.text = item.day
+                tvRvDescription.text = item.description
+                tvRvTemperature.text = item.temperature
+            }
+        }
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<ForecastEventData>(){
@@ -35,26 +44,19 @@ class ForecastEventAdapter : RecyclerView.Adapter<ForecastEventAdapter.ViewHolde
         }
     }
 
-    private val differ = AsyncListDiffer(this, differCallback)
+    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val ForecastData = differ.currentList[position]
-
-        holder.day.text = ForecastData.day
-        holder.illustration.setImageResource(ForecastData.illustration)
-        holder.description.text = ForecastData.description
-        holder.temperature.text = ForecastData.temperature
+        holder.setData(differ.currentList[position])
+        holder.setIsRecyclable(true)
     }
 
     override fun getItemCount(): Int {
-        return differ.currentList.size
+        return if (differ.currentList.size > limit) limit else differ.currentList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_forecast_week, parent, false)
-
-        return ViewHolder(view)
+        binding = ItemEventForecastBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder()
     }
 }

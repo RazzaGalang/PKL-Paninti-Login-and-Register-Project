@@ -8,18 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.razzagalangadzan.pklpaninti.Forecast.Event.ForecastEventFragment
 import com.razzagalangadzan.pklpaninti.R
-import com.razzagalangadzan.pklpaninti.databinding.FragmentForecastHomeBinding
+import com.razzagalangadzan.pklpaninti.databinding.FragmentHomeForecastBinding
 
 class ForecastHomeFragment : Fragment() {
 
-    private var _binding: FragmentForecastHomeBinding? = null
+    private var _binding: FragmentHomeForecastBinding? = null
     private val binding get() = _binding!!
+    private val ForecastHomeData by lazy { ForecastHomeAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentForecastHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeForecastBinding.inflate(inflater, container, false)
         val view = binding.root
 
         return view
@@ -30,7 +31,7 @@ class ForecastHomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setBackgroundGradientColor()
-        adapter()
+        apply()
         binding()
     }
 
@@ -46,21 +47,26 @@ class ForecastHomeFragment : Fragment() {
         }
     }
 
-    private fun adapter (){
-        val recyclerview = binding.rvHomeForecast
+    private fun apply (){
+        ForecastHomeData.differ.submitList(loadData())
 
-        recyclerview.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.apply {
+            rvHomeForecast.apply {
+                layoutManager=LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = ForecastHomeData
+            }
+        }
+    }
 
-        val data = ArrayList<ForecastHomeData>()
+    fun loadData(): MutableList<ForecastHomeData>{
+        val data : MutableList<ForecastHomeData> = mutableListOf()
 
-        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_cloud, getString(R.string.dummy_time)))
-        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_huge_cloud, getString(R.string.dummy_time)))
-        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_cloud_lighting, getString(R.string.dummy_time)))
-        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_rain, getString(R.string.dummy_time)))
+        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_cloud,getString(R.string.dummy_time)))
+        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_rain,getString(R.string.dummy_time)))
+        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_sun,getString(R.string.dummy_time)))
+        data.add(ForecastHomeData(getString(R.string.dummy_current_temp), R.drawable.ic_huge_cloud,getString(R.string.dummy_time)))
 
-        val adapter = ForecastHomeAdapter(data)
-
-        recyclerview.adapter = adapter
+        return data
     }
 
 }

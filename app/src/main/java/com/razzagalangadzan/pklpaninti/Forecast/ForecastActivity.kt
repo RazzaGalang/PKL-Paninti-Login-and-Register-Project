@@ -21,7 +21,7 @@ class ForecastActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_forecast)
+        setContentView(R.layout.activity_forecast)
 
         replaceFragment(ForecastHomeFragment())
     }

@@ -26,7 +26,6 @@
             app:layout_constraintGuide_percent="0.8" />
 
         <com.google.android.material.card.MaterialCardView
-            android:backgroundTint="@color/blue1"
             android:id="@+id/cvGradient"
             android:layout_width="match_parent"
             android:layout_height="@dimen/zero_dp"
@@ -266,7 +265,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textGuideline"
-            tools:listitem="@layout/item_forecast_home" />
+            tools:listitem="@layout/item_home_forecast"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

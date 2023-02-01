@@ -8,20 +8,19 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.razzagalangadzan.pklpaninti.Forecast.Home.ForecastHomeFragment
 import com.razzagalangadzan.pklpaninti.R
-import com.razzagalangadzan.pklpaninti.databinding.FragmentForecastBinding
-
+import com.razzagalangadzan.pklpaninti.databinding.FragmentEventForecastBinding
 
 class ForecastEventFragment : Fragment() {
 
-
-    private var _binding: FragmentForecastBinding? = null
+    private var _binding: FragmentEventForecastBinding? = null
     private val binding get() = _binding!!
+    private val ForecastEventData by lazy { ForecastEventAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentForecastBinding.inflate(inflater, container, false)
+        _binding = FragmentEventForecastBinding.inflate(inflater, container, false)
         val view = binding.root
 
         return view
@@ -31,7 +30,7 @@ class ForecastEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setAdapter()
+        apply()
         setBackgroundGradientColor()
         backToMain()
     }
@@ -48,12 +47,19 @@ class ForecastEventFragment : Fragment() {
         }
     }
 
-    private fun setAdapter (){
-        val recyclerview = binding.rvWeekForecast
+    private fun apply (){
+        ForecastEventData.differ.submitList(loadData())
 
-        recyclerview.layoutManager = LinearLayoutManager(this.context)
+        binding.apply {
+            rvWeekForecast.apply {
+                layoutManager=LinearLayoutManager(this.context)
+                adapter = ForecastEventData
+            }
+        }
+    }
 
-        val data = ArrayList<ForecastEventData>()
+    fun loadData(): MutableList<ForecastEventData>{
+        val data : MutableList<ForecastEventData> = mutableListOf()
 
         data.add(ForecastEventData("Monday", R.drawable.ic_cloud, "Cloudy", "29°"))
         data.add(ForecastEventData("Tuesday", R.drawable.ic_cloud, "Cloudy", "24°"))
@@ -63,8 +69,6 @@ class ForecastEventFragment : Fragment() {
         data.add(ForecastEventData("Saturday", R.drawable.ic_sun, "Sunny", "24°"))
         data.add(ForecastEventData("Sunday", R.drawable.ic_sun, "Sunny", "30°"))
 
-        val adapter = ForecastEventAdapter(data)
-
-        recyclerview.adapter = adapter
+        return data
     }
 }
