@@ -22,10 +22,10 @@
             android:layout_margin="@dimen/medium_margin">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvIntensity"
+                android:id="@+id/tvHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_intensity"
+                android:text="@string/text_desc_humidity"
                 android:textAppearance="@style/TextAppearance.Forecast.SubOpenSans"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/tvTime"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvIntensity" />
+                app:layout_constraintTop_toBottomOf="@id/tvHumidity" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTime"

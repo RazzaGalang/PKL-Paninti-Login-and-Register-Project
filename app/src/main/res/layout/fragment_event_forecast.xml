@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/forecast_dark"
-    tools:context=".Forecast.Event.ForecastEventFragment">
+    tools:context=".Forecast.mvvm.ui.main.view.ForecastEventFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
