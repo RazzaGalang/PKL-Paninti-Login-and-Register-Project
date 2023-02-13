@@ -51,7 +51,7 @@
     <string name="text_info_wind">Wind</string>
     <string name="text_desc_wind">13 km/h</string>
     <string name="text_cloudy">Cloudy</string>
-    <string name="text_dummy_min_temp">/17°</string>
+    <string name="text_dummy_min_temp">17°</string>
     <string name="text_dummy_max_temp">24</string>
     <string name="text_tommorow">Tomorrow</string>
     <string name="text_seven_days">7 Days</string>
@@ -61,4 +61,6 @@
     <string name="dummy_location">Minks</string>
     <string name="text_celcius">°C</string>
     <string name="day_monday">Monday</string>
+    <string name="text_cloud">Cloud</string>
+    <string name="slash"> / </string>
 </resources>

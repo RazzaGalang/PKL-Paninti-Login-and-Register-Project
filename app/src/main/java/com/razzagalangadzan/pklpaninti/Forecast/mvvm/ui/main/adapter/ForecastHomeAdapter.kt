@@ -12,13 +12,13 @@ import com.razzagalangadzan.pklpaninti.databinding.ItemHomeForecastBinding
 class ForecastHomeAdapter :
     RecyclerView.Adapter<ForecastHomeAdapter.ViewHolder>() {
 
-    private val limit = 24
+    private val limit = 25
 
     inner class ViewHolder (private val binding: ItemHomeForecastBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: Hour) {
             binding.apply {
                 val valuesHumidity = "${item.humidity}%"
-                val valuesHour = "${item.time.substring(11, 16)}"
+                val valuesHour = item.time.substring(11, 16)
                 val valuesImage = "https:${item.condition.icon}"
 
                 tvHumidity.text = valuesHumidity
