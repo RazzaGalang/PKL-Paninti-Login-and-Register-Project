@@ -63,14 +63,8 @@ class ForecastHomeFragment : Fragment() {
 
     private fun showLoading(loading: Boolean) {
         binding.animLoading.isVisible = loading
-    }
-
-    private fun showHomeMainView(loading: Boolean) {
-        binding.groupHomeMainView.isVisible = loading
-    }
-
-    private fun showHomeRecyclerView(loading: Boolean) {
-        binding.groupHomeRecyclerView.isVisible = loading
+        binding.groupHomeMainView.isVisible = !loading
+        binding.groupHomeRecyclerView.isVisible = !loading
     }
 
     private fun setupViewModel() {
@@ -81,12 +75,6 @@ class ForecastHomeFragment : Fragment() {
     }
 
     private fun setupUI() {
-        binding.rvHomeForecast.addItemDecoration(
-            DividerItemDecoration(
-                binding.rvHomeForecast.context,
-                (binding.rvHomeForecast.layoutManager as LinearLayoutManager).orientation
-            )
-        )
         binding.rvHomeForecast.adapter = adapter
     }
 
@@ -94,9 +82,11 @@ class ForecastHomeFragment : Fragment() {
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let { resource ->
+                showLoading(resource.status ==  Status.SUCCESS || resource.status == Status.ERROR )
+                showLoading(resource.status == Status.LOADING)
+
                 when (resource.status) {
                     Status.SUCCESS -> {
-
                         resource.data?.location.let { location ->
                             val valuesLocation = location?.name
                             val getDate = "${location?.localtime}"
@@ -171,27 +161,15 @@ class ForecastHomeFragment : Fragment() {
                             }
                         }
 
-                        showLoading(false)
-                        showHomeMainView(true)
-                        showHomeRecyclerView(true)
-
                         resource.data?.let { users -> adapter.items = users.forecast.forecastday.component1().hour }
 
                         Log.e(TAG, "setupObservers: SUCCESS")
                     }
                     Status.ERROR -> {
-                        showLoading(true)
-                        showHomeMainView(false)
-                        showHomeRecyclerView(false)
-
                         Toast.makeText(this.context, it.message, Toast.LENGTH_LONG).show()
                         Log.e(TAG, "setupObservers: " + it.message)
                     }
                     Status.LOADING -> {
-                        showLoading(true)
-                        showHomeMainView(false)
-                        showHomeRecyclerView(false)
-
                         Log.e(TAG, "setupObservers: LOADING")
                     }
                 }

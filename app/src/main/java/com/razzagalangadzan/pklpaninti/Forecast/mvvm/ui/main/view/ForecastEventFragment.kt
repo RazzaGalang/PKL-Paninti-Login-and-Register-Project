@@ -75,12 +75,6 @@ class ForecastEventFragment : Fragment() {
     }
 
     private fun setupUI() {
-        binding.rvWeekForecast.addItemDecoration(
-            DividerItemDecoration(
-                binding.rvWeekForecast.context,
-                (binding.rvWeekForecast.layoutManager as LinearLayoutManager).orientation
-            )
-        )
         binding.rvWeekForecast.adapter = adapter
     }
 
@@ -90,7 +84,6 @@ class ForecastEventFragment : Fragment() {
             it?.let { resource ->
                 showLoading(resource.status ==  Status.SUCCESS || resource.status == Status.ERROR )
                 showLoading(resource.status == Status.LOADING)
-
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.forecast?.forecastday?.component2()?.day.let { values ->

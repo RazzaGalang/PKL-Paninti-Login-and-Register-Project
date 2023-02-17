@@ -103,7 +103,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tvLocation"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/loading_circle_orange" />
+                    app:lottie_rawRes="@raw/loading_day_night" />
 
 
                 <com.google.android.material.textview.MaterialTextView
