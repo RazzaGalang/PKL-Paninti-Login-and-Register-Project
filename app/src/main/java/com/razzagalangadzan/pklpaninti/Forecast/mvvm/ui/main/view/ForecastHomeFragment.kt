@@ -81,7 +81,6 @@ class ForecastHomeFragment : Fragment() {
     }
 
     private fun setupUI() {
-        adapter = ForecastHomeAdapter()
         binding.rvHomeForecast.addItemDecoration(
             DividerItemDecoration(
                 binding.rvHomeForecast.context,

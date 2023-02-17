@@ -51,14 +51,8 @@ class ForecastEventFragment : Fragment() {
 
     private fun showLoading(loading: Boolean) {
         binding.animLoading.isVisible = loading
-    }
-
-    private fun showEventMainView(loading: Boolean) {
-        binding.groupEventMainView.isVisible = loading
-    }
-
-    private fun showEventRecyclerView(loading: Boolean) {
-        binding.rvWeekForecast.isVisible = loading
+        binding.groupEventMainView.isVisible = !loading
+        binding.rvWeekForecast.isVisible = !loading
     }
 
     private fun setBackgroundGradientColor() {
@@ -81,7 +75,6 @@ class ForecastEventFragment : Fragment() {
     }
 
     private fun setupUI() {
-        adapter = ForecastEventAdapter()
         binding.rvWeekForecast.addItemDecoration(
             DividerItemDecoration(
                 binding.rvWeekForecast.context,
@@ -95,6 +88,9 @@ class ForecastEventFragment : Fragment() {
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let { resource ->
+                showLoading(resource.status ==  Status.SUCCESS || resource.status == Status.ERROR )
+                showLoading(resource.status == Status.LOADING)
+
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.forecast?.forecastday?.component2()?.day.let { values ->
@@ -131,25 +127,13 @@ class ForecastEventFragment : Fragment() {
                             }
                         }
 
-                        showLoading(false)
-                        showEventMainView(true)
-                        showEventRecyclerView(true)
-
                         resource.data?.let { users -> adapter.items = users.forecast.forecastday }
                         Log.e(ContentValues.TAG, "setupObservers: SUCCESS")
                     }
                     Status.ERROR -> {
-                        showLoading(true)
-                        showEventMainView(false)
-                        showEventRecyclerView(false)
-
                         Log.e(ContentValues.TAG, "setupObservers: ${it.message}")
                     }
                     Status.LOADING -> {
-                        showLoading(true)
-                        showEventMainView(false)
-                        showEventRecyclerView(false)
-
                         Log.e(ContentValues.TAG, "setupObservers: LOADING")
                     }
                 }

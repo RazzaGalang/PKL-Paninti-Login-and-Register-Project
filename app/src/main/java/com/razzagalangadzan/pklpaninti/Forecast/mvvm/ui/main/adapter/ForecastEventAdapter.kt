@@ -44,15 +44,15 @@ class ForecastEventAdapter :
         override fun areItemsTheSame(
             oldItem: Forecastday,
             newItem: Forecastday
-        ): Boolean = oldItem.date == newItem.date
+        ) = oldItem.date == newItem.date
 
         override fun areContentsTheSame(
             oldItem: Forecastday,
             newItem: Forecastday
-        ): Boolean = oldItem == newItem
+        ) = oldItem == newItem
     }
 
-    val differEvent = AsyncListDiffer(this, differCallback)
+    private val differEvent = AsyncListDiffer(this, differCallback)
 
     var items : List<Forecastday>
         get() = differEvent.currentList

@@ -32,15 +32,15 @@ class ForecastHomeAdapter :
         override fun areItemsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean = oldItem.time == newItem.time
+        ) = oldItem.time == newItem.time
 
         override fun areContentsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean = oldItem == newItem
+        ) = oldItem == newItem
     }
 
-    val differ = AsyncListDiffer(this, differCallback)
+    private val differ = AsyncListDiffer(this, differCallback)
 
     var items : List<Hour>
         get() = differ.currentList
