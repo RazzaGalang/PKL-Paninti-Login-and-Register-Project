@@ -12,8 +12,6 @@ import com.razzagalangadzan.pklpaninti.databinding.ItemHomeForecastBinding
 class ForecastHomeAdapter :
     RecyclerView.Adapter<ForecastHomeAdapter.ViewHolder>() {
 
-    private val limit = 25
-
     inner class ViewHolder (private val binding: ItemHomeForecastBinding) : RecyclerView.ViewHolder(binding.root) {
         fun setData(item: Hour) {
             binding.apply {
@@ -34,16 +32,12 @@ class ForecastHomeAdapter :
         override fun areItemsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean {
-            return oldItem.time == newItem.time
-        }
+        ): Boolean = oldItem.time == newItem.time
 
         override fun areContentsTheSame(
             oldItem: Hour,
             newItem: Hour
-        ): Boolean {
-            return oldItem == newItem
-        }
+        ): Boolean = oldItem == newItem
     }
 
     val differ = AsyncListDiffer(this, differCallback)
@@ -65,12 +59,5 @@ class ForecastHomeAdapter :
         holder.setIsRecyclable(true)
     }
 
-    override fun getItemCount(): Int {
-        return if (items.size > limit) limit else items.size
-    }
-
-
-//    fun addHomeData(users: List<Hour>) {
-//        forecast = users
-//    }
+    override fun getItemCount(): Int = items.size
 }

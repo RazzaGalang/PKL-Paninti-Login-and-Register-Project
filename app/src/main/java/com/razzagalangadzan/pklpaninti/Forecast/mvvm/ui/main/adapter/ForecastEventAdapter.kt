@@ -13,10 +13,8 @@ import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ForecastEventAdapter(private var forecast: List<Forecastday>) :
+class ForecastEventAdapter :
     RecyclerView.Adapter<ForecastEventAdapter.ViewHolder>() {
-
-    private val limit = 7
 
     inner class ViewHolder(private val binding: ItemEventForecastBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDateFormat")
@@ -46,16 +44,12 @@ class ForecastEventAdapter(private var forecast: List<Forecastday>) :
         override fun areItemsTheSame(
             oldItem: Forecastday,
             newItem: Forecastday
-        ): Boolean {
-            return oldItem.date == newItem.date
-        }
+        ): Boolean = oldItem.date == newItem.date
 
         override fun areContentsTheSame(
             oldItem: Forecastday,
             newItem: Forecastday
-        ): Boolean {
-            return oldItem == newItem
-        }
+        ): Boolean = oldItem == newItem
     }
 
     val differEvent = AsyncListDiffer(this, differCallback)
@@ -69,9 +63,7 @@ class ForecastEventAdapter(private var forecast: List<Forecastday>) :
         holder.setIsRecyclable(true)
     }
 
-    override fun getItemCount(): Int {
-        return if (items.size > limit) limit else items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         ItemEventForecastBinding.inflate(
