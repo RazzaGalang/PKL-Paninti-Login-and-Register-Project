@@ -82,7 +82,6 @@ class ForecastEventFragment : Fragment() {
     private fun setupObservers() {
         viewModel.getForecast().observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let { resource ->
-                showLoading(resource.status ==  Status.SUCCESS || resource.status == Status.ERROR )
                 showLoading(resource.status == Status.LOADING)
                 when (resource.status) {
                     Status.SUCCESS -> {
