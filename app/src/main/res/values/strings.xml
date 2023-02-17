@@ -8,8 +8,6 @@
     <string name="text_register">Belum punya akun? Daftar Disini</string>
     <string name="text_login">Sudah punya akun? Masuk Sekarang</string>
     <string name="gender">Jenis Kelamin</string>
-
-
     <!-- TODO: Register String on Below -->
     <string name="full_name">Nama Lengkap</string>
     <string name="username">Username</string>
@@ -25,8 +23,6 @@
     <string name="placeholder_email">Masukan Email</string>
     <string name="placeholder_password">Masukan Password</string>
     <string name="placeholder_confirm_password">Masukan Password kembali</string>
-
-
     <string name="error_text_null_email_and_username">Email atau Username wajib diisi</string>
     <string name="error_text_null_password">Password wajib diisi</string>
     <string name="error_text_null_fullname">Nama lengkap wajib diisi!</string>
